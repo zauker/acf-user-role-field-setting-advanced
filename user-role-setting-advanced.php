@@ -98,9 +98,12 @@
 					return $field;
 				}
 			}
-			//echo '<pre>'; print_r($field); echo '</pre>';
+			// echo '<pre>'; print_r($field); echo '</pre>';
 			if (!$this->user_can_edit($field)) {
-				$field["readonly"] = true;
+        $field["readonly"] = 1;
+        if ($field["type"] == "true_false" || $field["type"] == "checkbox" || $field["type"] == "radio") {
+          $field["disabled"] = 1;
+        }
 			}
       return $field;
 			// $this->output_hidden_fields($field['name'], $field['value']);
